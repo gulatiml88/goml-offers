@@ -2,14 +2,14 @@
 import { Grid } from '@mui/material';
 
 // project imports
-import ValidationWizard from 'sections/form-wizard';
+import FormWizard from 'sections/form-wizard';
 
 // ==============================|| FORMS WIZARD ||============================== //
 
 const FormsWizard = () => (
   <Grid container spacing={2.5} justifyContent="center">
-    <Grid item xs={12} md={6} lg={7}>
-      <ValidationWizard />
+    <Grid item xs={12}>
+      <FormWizard />
     </Grid>
   </Grid>
 );
