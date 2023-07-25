@@ -7,16 +7,10 @@ const getUrl = (pathname: string) => {
 };
 
 export const axiosRequest = (pathname: string, METHOD: string, inputDTO?: any, params?: any) => {
-  const accessToken = localStorage.getItem('serviceToken') || null;
-
+  console.log(getUrl(pathname));
   return axios({
     url: getUrl(pathname) + (params ? '?' + params : ''),
     method: METHOD,
-    ...(inputDTO && { data: inputDTO }),
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-      Accept: '*/*',
-      ...(accessToken && { Authorization: 'Bearer ' + accessToken })
-    }
+    ...(inputDTO && { data: inputDTO })
   });
 };

@@ -22,7 +22,7 @@ const MainRoutes = {
       ),
       children: [
         {
-          path: 'goml-offers',
+          path: '',
           element: <GoMLOffers />
         }
       ]

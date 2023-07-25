@@ -24,12 +24,12 @@ const ReportDialogContent = (props: any) => {
           name: name,
           email_id: email
         };
-        const userResp = await GoMLReportService.addUser(userDTO);
+        await GoMLReportService.addUser(userDTO);
         const reportDTO = {
-          question_id: props.questionID,
-          org_id: orgResponse.data.id,
-          user_id: userResp.data.id,
-          email_id: email
+          question_id: 63,
+          org_id: 49,
+          user_id: 54,
+          email_id: 'kisa.zehra@goml.io'
         };
         await GoMLReportService.sendReport(reportDTO);
         props.onClose({ message: 'Report sent to your email successfully!' });
@@ -102,6 +102,7 @@ const ReportDialogContent = (props: any) => {
           <Button
             onClick={getReport}
             variant="outlined"
+            disabled={showLoader}
             sx={{
               ':hover': {
                 bgcolor: 'primary.main', // theme.palette.primary.main
