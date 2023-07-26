@@ -11,16 +11,16 @@ import AnimateButton from 'components/@extended/AnimateButton';
 import { wizardData } from 'data/wizardData';
 
 const validationSchema = yup.object({
-  kpi: yup.string().required('Key performance indicator is required').nullable()
+  keyPerformance: yup.string().required('Key performance indicator is required').nullable()
 });
 
 // ==============================|| VALIDATION WIZARD - KPI ||============================== //
 
-export type KPIData = { kpi?: string };
+export type KPIData = { keyPerformance?: string };
 interface KPIFormProps {
   kpiData: KPIData;
   setKPIData: (d: KPIData) => void;
-  handleSubmit: () => void;
+  handleSubmit: (d: string) => void;
   handleBack: () => void;
   setErrorIndex: (i: number | null) => void;
 }
@@ -30,14 +30,14 @@ export default function KPIForm({ kpiData, setKPIData, handleSubmit, handleBack,
 
   const formik = useFormik({
     initialValues: {
-      kpi: kpiData.kpi || null
+      keyPerformance: kpiData.keyPerformance || null
     },
     validationSchema,
     onSubmit: (values) => {
       setKPIData({
-        kpi: values.kpi!
+        keyPerformance: values.keyPerformance!
       });
-      handleSubmit();
+      handleSubmit(values.keyPerformance!);
     }
   });
 
@@ -52,17 +52,17 @@ export default function KPIForm({ kpiData, setKPIData, handleSubmit, handleBack,
             <Stack spacing={0.5}>
               <InputLabel>Key performance indicator*</InputLabel>
               <Autocomplete
-                id="kpi"
-                value={formik.values.kpi}
+                id="keyPerformance"
+                value={formik.values.keyPerformance}
                 onChange={(event: any, newValue: string | null) => {
-                  formik.setFieldValue('kpi', newValue);
+                  formik.setFieldValue('keyPerformance', newValue);
                 }}
                 options={kpiList}
-                renderInput={(params: any) => <TextField name="kpi" {...params} placeholder="Select performance indicator" />}
+                renderInput={(params: any) => <TextField name="keyPerformance" {...params} placeholder="Select performance indicator" />}
               />
-              {formik.touched.kpi && formik.errors.kpi && (
+              {formik.touched.keyPerformance && formik.errors.keyPerformance && (
                 <FormHelperText error id="helper-text-dataSrc">
-                  {formik.errors.kpi}
+                  {formik.errors.keyPerformance}
                 </FormHelperText>
               )}
             </Stack>

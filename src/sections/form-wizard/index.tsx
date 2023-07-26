@@ -27,7 +27,7 @@ const steps = ['Problem', 'Data', 'Stakeholders and Budget', 'Technology', 'KPI'
 const getStepContent = (
   step: number,
   handleNext: () => void,
-  handleSubmit: () => void,
+  handleSubmit: (d: string) => void,
   handleBack: () => void,
   setErrorIndex: (i: number | null) => void,
   problemData: ProblemData,
@@ -115,7 +115,7 @@ const FormWizard = () => {
     return sourceData.startDate.getFullYear() + '-' + sourceData.endDate.getFullYear();
   };
 
-  const getQuestionsDTO = () => {
+  const getQuestionsDTO = (kpi: string) => {
     return {
       question: {
         primary_data_source: sourceData.primary_data_source,
@@ -128,17 +128,17 @@ const FormWizard = () => {
         technology_preferance: techData.technology_preferance,
         scalability: techData.scalability,
         hosting_ml_solutions: techData.hosting_ml_solutions,
-        kpi: kpiData.kpi
+        kpi: kpi
       },
       business_problem: problemData.business_problem
     };
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (data: string) => {
     setErrorIndex(null);
     setShowLoader(true);
     try {
-      const questionsDTO = getQuestionsDTO();
+      const questionsDTO = getQuestionsDTO(data);
       console.log(questionsDTO);
       const response = await GoMLReportService.submitQuestions(questionsDTO);
       setQuestionID(response.data.id);
