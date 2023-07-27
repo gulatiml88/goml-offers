@@ -123,10 +123,10 @@ const FormWizard = () => {
         timeframe: getTimeFrame(),
         data_quality: sourceData.data_quality,
         key_stakeholders: budgetData.key_stakeholders,
-        number_of_stakeholders: budgetData.number_of_stakeholders,
+        number_of_stakeholders: Number(budgetData.number_of_stakeholders),
         budget: budgetData.budget,
         technology_preferance: techData.technology_preferance,
-        scalability: techData.scalability,
+        scalability: Number(techData.scalability),
         hosting_ml_solutions: techData.hosting_ml_solutions,
         kpi: kpi
       },

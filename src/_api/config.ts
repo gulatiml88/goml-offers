@@ -11,6 +11,7 @@ export const axiosRequest = (pathname: string, METHOD: string, inputDTO?: any, p
   return axios({
     url: getUrl(pathname) + (params ? '?' + params : ''),
     method: METHOD,
+    timeout: 420000, // Wait for 7 minutes
     ...(inputDTO && { data: inputDTO })
   });
 };
